@@ -21,12 +21,3 @@ pub fn load_input_file(filepath_string: &str) -> Option<String>{
         Ok(_) => return Some(input.to_string()),
     };
 }
-
-
-pub fn get_number(s: &str, sep: char) -> Option<u32>
-{
-    s.split(sep)
-     .next()?    // the ? returns None if necessary
-     .parse()    // result is Result<u32,...>
-     .ok()       // transforms a Result into an Option
-}

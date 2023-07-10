@@ -1,27 +1,33 @@
 use advent_of_code::load_input_file;
-use advent_of_code::get_number;
 fn main() {
     let file_as_string = load_input_file("inputs/2022_day_1_input.txt").unwrap();
     //println!("{}",file_as_string);
 
     let elf_parts = file_as_string.split("\n\n");
     let elves = elf_parts.collect::<Vec<&str>>();
-    let mut totals: Vec<u16> = Vec::new();
+    let mut totals: Vec<u64> = Vec::new();
 
     for (index, elf) in elves.iter().enumerate() {
-        println!("\n{} \nindex:{}\n---------", elf, index);
-        let elf_cals: Vec<u16> ;
-        // for cal in elf {
-        //     println!("{}",cal);
-        // }
-
-        // totals.push( elf_cal_parts );
-        //  totals[index] += cal as u16;
+        // println!("\n{} \nindex:{}\n---------", elf, index);
+        let mut elf_cals: Vec<u64> = Vec::new();
+        for cal in elf.split("\n") {
+            elf_cals.push(cal.parse().unwrap_or(0));
+        }
+        let total_to_push = elf_cals.iter().sum();
+        totals.push(total_to_push);
+        println!("Elf {} : {}", index+1, total_to_push );
     }
-    // let mut index = 0;
-    // for total in &totals {
-    //     index += 1;
-    //     println!("index: {}, total: {}", total, totals[index])
-    // }
+
+    //assume 1 elf only can have the maximum number of calories
+    let max_calories = totals.iter().max();
+    match max_calories {
+        Some(max) => println!("Elf {} was the highest with <{}> calories in total.", totals.iter().position(|&x| x == *max).unwrap() + 1, max),
+        None => println!("No elves"),
+    }
+    
+    // Starting part 2
+    // totals.sort_by(|a, b| b.cmp(a));
+
+
 }
 
