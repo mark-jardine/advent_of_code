@@ -24,10 +24,14 @@ fn main() {
         Some(max) => println!("Elf {} was the highest with <{}> calories in total.", totals.iter().position(|&x| x == *max).unwrap() + 1, max),
         None => println!("No elves"),
     }
-    
-    // Starting part 2
-    // totals.sort_by(|a, b| b.cmp(a));
 
+    // Part 2- get total calories of top three calorie holders
+    totals.sort_by(|a, b| b.cmp(a));
+
+    let top_three_totals: Vec<u64> = totals[0..3].to_vec();
+    let top_three_sum: u64= top_three_totals.iter().sum();
+
+    println!("\nTotal calories of the top three Elves: {:?}",top_three_sum);
 
 }
 
