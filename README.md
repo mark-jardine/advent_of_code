@@ -1,4 +1,5 @@
-# advent_of_code
-Completing advent of code 2022 in rust. 
+# Advent of Code
+Completing advent of code in rust. 
 
 https://adventofcode.com/2022
+https://adventofcode.com/2023
