@@ -16,8 +16,8 @@ pub fn load_input_file(filepath_string: &str) -> Option<String>{
 
     let mut input: String = String::new();
 
-    match file.read_to_string(&mut input){
-        Err(_) => return None,
-        Ok(_) => return Some(input.to_string()),
+    return match file.read_to_string(&mut input){
+        Err(_) => None,
+        Ok(_) => Some(input.to_string()),
     };
 }
